@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DefaultHeaderComponent } from './default-header.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('DefaultHeaderComponent', () => {
   let component: DefaultHeaderComponent;
@@ -8,7 +9,8 @@ describe('DefaultHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DefaultHeaderComponent ]
+      declarations: [ DefaultHeaderComponent ],
+      imports: [BrowserAnimationsModule]
     })
     .compileComponents();
   }));
