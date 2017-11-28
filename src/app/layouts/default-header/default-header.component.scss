@@ -1,0 +1,38 @@
+@import './../../../styles/helpers/colors';
+.default-header {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: $grey-50;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $green-500;
+}
+.logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.85rem;
+}
+
+.default-nav-screen {
+  display: none;
+  visibility: hidden;
+}
+
+.default-nav-mobile {
+  background-color: $green-400;
+  width: 100%;
+
+  a {
+    padding: 0.500rem 0.500rem 0.500rem 0.500rem;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+

@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import {LayoutsModule} from './layouts/layouts.module';
+import {HomeAreaModule} from './home-area/home-area.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -12,7 +15,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutsModule,
+    HomeAreaModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
