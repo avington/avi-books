@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import * as fromAccountStore from './account-area/store';
+import {Store} from '@ngrx/store';
+import {LocalStorage} from 'ngx-webstorage';
+import {Token} from './account-area/models/token';
+
 
 @Component({
   selector: 'avi-root',
@@ -6,5 +11,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'avi';
+  @LocalStorage()
+  token: Token;
+
+  constructor(private store: Store<fromAccountStore.AccountState>) {
+
+    this.store.select(fromAccountStore.getTokenFromState)
+      .subscribe(state => this.token = {...state});
+
+  }
 }
+

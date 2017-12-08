@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {SessionStorage} from 'ngx-webstorage';
+import {AppState} from '../../models/app-state';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {Profile} from '../../account-area/models/profile';
+import * as profileActions from '../../account-area/store/actions/profile-actions';
+import {GoogleAuthService} from '../../global-providers/google-auth.service';
+import {WindowReferenceService} from '../../global-providers/window-reference.service';
 
 @Component({
   selector: 'avi-default-header',
@@ -20,20 +26,34 @@ import {SessionStorage} from 'ngx-webstorage';
 })
 export class DefaultHeaderComponent implements OnInit {
 
-  @SessionStorage() isLoggedIn: boolean;
+  profile$: Observable<Profile>;
+
 
   expandState: string;
 
-  constructor() {
+  constructor(private store: Store<AppState>,
+              private auth: GoogleAuthService,
+              private winRef: WindowReferenceService) {
+    this.profile$ = this.store.select(s => s.profile);
   }
 
   ngOnInit() {
     this.expandState = 'in';
-
-
+    this.getProfile();
   }
 
   toggleMobileMenu() {
     this.expandState = this.expandState === 'out' ? 'in' : 'out';
+  }
+
+  private getProfile(): any {
+    this.store.dispatch(new profileActions.LoadProfileAction());
+  }
+
+
+  buildAuthUrl() {
+    const _window = this.winRef.nativeWindow;
+    const url = this.auth.buildUrl('home');
+    _window.location.replace(url);
   }
 }
