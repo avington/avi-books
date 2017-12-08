@@ -15,7 +15,7 @@
   <nav class="default-nav-mobile" [@slideInOut]="expandState">
     <ul *ngIf="!isLoggedIn">
       <li>
-        <a routerLink="login">Login</a>
+        <a (click)="buildAuthUrl()">Login</a>
       </li>
       <li>
         <a routerLink="registter">Register</a>

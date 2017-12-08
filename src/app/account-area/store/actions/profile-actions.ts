@@ -1,4 +1,4 @@
-import {Profile} from '../models/profile';
+import {Profile} from '../../models/profile';
 
 export const LOAD_PROFILE = 'LOAD_PROFILE';
 export const LOAD_PROFILE_SUCCESS = 'LOAD_PROFILE_SUCCESS';

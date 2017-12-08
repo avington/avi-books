@@ -25,18 +25,13 @@ describe('GoogleAuthService', () => {
   it('should build the correct URL',
     inject([GoogleAuthService], (service: GoogleAuthService) => {
 
-    const expectedUrl = `https://accounts.google.com/o/oauth2/v2/auth?
-       scope=https://www.googleapis.com/auth/books&
-       include_granted_scopes=true&
-       redirect_uri=http://localhost:4200/callback&
-       response_type=token&
-       client_id=474819375433-k249ib6o8f784f1is1r0dnc113dmmpsi.apps.googleusercontent.com&
-       state=test&
-       login_hint=hint`;
+      /* tslint:disable */
+      const expectedUrl: string = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/books&include_granted_scopes=true&redirect_uri=http://localhost:4200/oath2/callback&response_type=token&client_id=474819375433-k249ib6o8f784f1is1r0dnc113dmmpsi.apps.googleusercontent.com&state=test`;
+      /* tslint:enable */
 
-      const url = service.buildUrl('test', 'hint');
+      const url = service.buildUrl('test');
 
       expect(url).toEqual(expectedUrl);
     })
-    );
+  );
 });
