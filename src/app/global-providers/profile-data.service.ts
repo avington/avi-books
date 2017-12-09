@@ -9,7 +9,7 @@ export class ProfileDataService {
   }
 
   getProfile() {
-    return Observable.of(new Profile());
+    return undefined;
   }
 
 }
