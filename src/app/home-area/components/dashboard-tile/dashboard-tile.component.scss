@@ -1,0 +1,19 @@
+@import "../../../../styles/helpers/colors";
+
+.dashboard-tile-link {
+  display: inline-block;
+  background-color: $deep-purple-800;
+  color: $blue-grey-50;
+  width: 7rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+
+  .title {
+    width: 100%;
+    text-align: center;
+  }
+}

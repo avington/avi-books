@@ -12,6 +12,10 @@ export class AuthHelperService {
       return false;
     }
 
+    if (typeof token.timeCreated === "string") {
+      token.timeCreated = new Date(token.timeCreated);
+    }
+
     const expiredDate = new Date(
       token.timeCreated.setSeconds(
         token.timeCreated.getSeconds() + parseInt(token.expiresIn, 10)

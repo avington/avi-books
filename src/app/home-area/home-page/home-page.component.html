@@ -1,7 +1,9 @@
 <avi-default-layout>
-  <p>
-    home-page works!
-  </p>
+  <div class="anonymous-container" *ngIf="!isLoggedIn">
+    <avi-greetings></avi-greetings>
+  </div>
+  <div class="logged-in-container" *ngIf="isLoggedIn">
+    <avi-dashboard></avi-dashboard>
+  </div>
+
 </avi-default-layout>
-
-
