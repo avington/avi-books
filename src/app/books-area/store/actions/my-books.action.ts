@@ -1,5 +1,5 @@
-import { BookVolume } from './../models/book-volume';
 import { Action } from '@ngrx/store';
+import {BookVolume} from '../../models/book-volume';
 
 /**
  * For each action type in an action group, make a simple

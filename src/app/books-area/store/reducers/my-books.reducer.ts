@@ -1,5 +1,5 @@
-import { BookVolume } from './../models/book-volume';
 import * as fromActions from '../actions';
+import {BookVolume} from '../../models/book-volume';
 
 export interface MyBookState {
   entities: { [id: number]: BookVolume };
