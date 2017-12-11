@@ -37,6 +37,8 @@ export class DefaultHeaderComponent implements OnInit {
     this.profile$ = this.store.select(s => s.profile);
   }
 
+  isLoggedIn: boolean;
+
   ngOnInit() {
     this.expandState = 'in';
     this.getProfile();
