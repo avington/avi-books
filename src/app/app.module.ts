@@ -46,12 +46,7 @@ const metaReducers: MetaReducer<any>[] = !environment.production
   ],
   providers: [
     ...GLOBAL_PROVIDERS,
-    { provide: RouterStateSerializer, useClass: CustomSerializer },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AddTokenService,
-      multi: true
-    }
+    { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
   bootstrap: [AppComponent]
 })

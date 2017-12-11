@@ -10,4 +10,4 @@ export const reducers: ActionReducerMap<BooksState> = {
   myBooks: fromMyBooks.reducer
 };
 
-export const getBooksState = createFeatureSelector<BooksState>('Books');
+export const getBooksState = createFeatureSelector<BooksState>('books');

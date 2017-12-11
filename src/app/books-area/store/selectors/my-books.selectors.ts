@@ -8,7 +8,10 @@ import * as fromFeature from '../reducers';
 
 export const getMyBooksState = createSelector(
   fromFeature.getBooksState,
-  (state: fromFeature.BooksState) => state.myBooks
+  (state: fromFeature.BooksState) => {
+    console.log(state);
+    return state.myBooks;
+  }
 );
 
 export const getMyBooksEntitiesFromState = createSelector(
