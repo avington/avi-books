@@ -1,6 +1,6 @@
-import {MyBooksEffects} from './my-books.effects';
+import {MyBooksEffects} from './my-book-shelves.effects';
 
-export * from './my-books.effects';
+export * from './my-book-shelves.effects';
 
 export const effects: any[] = [
   MyBooksEffects

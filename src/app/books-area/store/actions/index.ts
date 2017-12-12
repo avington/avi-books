@@ -1,1 +1,1 @@
-export * from './my-books.action';
+export * from './my-book-shelves.action';

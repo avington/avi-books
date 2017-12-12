@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  private myBookShelves: { tileText: string; routerLinkText: string };
 
   constructor() { }
 
   ngOnInit() {
+
+    this.myBookShelves = {
+      tileText: 'My Book Shelves',
+      routerLinkText: '/books'
+    };
   }
 
 }

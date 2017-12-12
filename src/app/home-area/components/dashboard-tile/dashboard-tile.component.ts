@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'avi-dashboard-tile',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-tile.component.scss']
 })
 export class DashboardTileComponent implements OnInit {
+
+  @Input() tileText: string;
+  @Input() routerLinkText: string;
 
   constructor() { }
 

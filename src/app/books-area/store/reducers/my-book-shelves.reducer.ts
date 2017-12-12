@@ -1,13 +1,13 @@
 import * as fromActions from '../actions';
-import {BookVolume} from '../../models/book-volume';
+import { BookShelf } from '../../models/book-shelf';
 
 export interface MyBookState {
-  entities: { [id: number]: BookVolume };
+  entities: { [id: number]: BookShelf };
   loading: boolean;
   loaded: boolean;
 }
 
-const initialState: MyBookState = {
+export const initialState: MyBookState = {
   entities: {},
   loading: false,
   loaded: false
@@ -25,11 +25,11 @@ export function reducer(
       };
     }
     case fromActions.MyBooksActionTypes.LOAD_MY_BOOKS_SUCCESS: {
-      const books = action.payload;
+      const books = action.payload.items;
 
       const entities = books.reduce(
         // tslint:disable-next-line:no-shadowed-variable
-        (entities: { [id: number]: BookVolume }, book: BookVolume) => {
+        (entities: { [id: number]: BookShelf }, book: BookShelf) => {
           return {
             ...entities,
             [book.id]: book

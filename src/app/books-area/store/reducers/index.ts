@@ -1,5 +1,5 @@
 import { ActionReducerMap } from '@ngrx/store';
-import * as fromMyBooks from './my-books.reducer';
+import * as fromMyBooks from './my-book-shelves.reducer';
 import { createFeatureSelector } from '@ngrx/store/src/selector';
 
 export interface BooksState {

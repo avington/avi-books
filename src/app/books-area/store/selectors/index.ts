@@ -1,1 +1,1 @@
-export * from './my-books.selectors';
+export * from './my-book-shelves.selectors';

@@ -1,14 +1,15 @@
 import { Action } from '@ngrx/store';
 import {BookVolume} from '../../models/book-volume';
+import { MyBookShelves } from '../../models/my-book-shelves';
 
 /**
  * For each action type in an action group, make a simple
  * enum object for all of this group's action types.
  */
 export enum MyBooksActionTypes {
-  LOAD_MY_BOOKS = '[MyBooks] LOAD_MY_BOOKS',
-  LOAD_MY_BOOKS_SUCCESS = '[MyBooks] LOAD_MY_BOOKS_SUCCESS',
-  LOAD_MY_BOOKS_FAILED = '[MyBooks] LOAD_MY_BOOKS_FAILED'
+  LOAD_MY_BOOKS = '[MyBooks] LOAD_MY_BOOKSHELVES',
+  LOAD_MY_BOOKS_SUCCESS = '[MyBooks] LOAD_MY_BOOKSHELVES_SUCCESS',
+  LOAD_MY_BOOKS_FAILED = '[MyBooks] LOAD_MY_BOOKSHELVES_FAILED'
 }
 
 /**
@@ -16,18 +17,18 @@ export enum MyBooksActionTypes {
  * payload. Expressing actions as classes enables powerful
  * type checking in reducer functions.
  */
-export class LoadMyBooks implements Action {
+export class LoadMyBookShelves implements Action {
   readonly type = MyBooksActionTypes.LOAD_MY_BOOKS;
 
   public payload: any;
 }
-export class LoadMyBooksSuccess implements Action {
+export class LoadMyBookShelvesSuccess implements Action {
   readonly type = MyBooksActionTypes.LOAD_MY_BOOKS_SUCCESS;
 
-  constructor(public payload: BookVolume[]) {}
+  constructor(public payload: MyBookShelves) {}
 }
 
-export class LoadMyBooksFailed implements Action {
+export class LoadMyBookShelvesFailed implements Action {
   readonly type = MyBooksActionTypes.LOAD_MY_BOOKS_FAILED;
 
   constructor(public payload: any) {}
@@ -38,6 +39,6 @@ export class LoadMyBooksFailed implements Action {
  * so that reducers can easily compose action types
  */
 export type MyBooksActions =
-  | LoadMyBooks
-  | LoadMyBooksSuccess
-  | LoadMyBooksFailed;
+  | LoadMyBookShelves
+  | LoadMyBookShelvesSuccess
+  | LoadMyBookShelvesFailed;

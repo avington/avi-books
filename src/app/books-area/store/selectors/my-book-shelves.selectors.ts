@@ -2,7 +2,7 @@ import {
   getMyBooksEntities,
   getMyBooksLoaded,
   getMyBooksLoading
-} from '../reducers/my-books.reducer';
+} from '../reducers/my-book-shelves.reducer';
 import { createSelector } from '@ngrx/store';
 import * as fromFeature from '../reducers';
 

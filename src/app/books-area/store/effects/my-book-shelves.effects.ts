@@ -19,8 +19,8 @@ export class MyBooksEffects {
     switchMap(() => {
       return this.bookHttpService.getMyLibraryBooksSelves()
         .pipe(
-          map(response => new fromActions.LoadMyBooksSuccess(response as BookVolume[])),
-          catchError(error => of(new fromActions.LoadMyBooksFailed(error)))
+          map(response => new fromActions.LoadMyBookShelvesSuccess(response)),
+          catchError(error => of(new fromActions.LoadMyBookShelvesFailed(error)))
         );
     })
   );

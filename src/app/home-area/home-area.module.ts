@@ -5,11 +5,13 @@ import {LayoutsModule} from '../layouts/layouts.module';
 import { GreetingsComponent } from './containers/greetings/greetings.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { DashboardTileComponent } from './components/dashboard-tile/dashboard-tile.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    LayoutsModule
+    LayoutsModule,
+    RouterModule
   ],
   declarations: [HomePageComponent, GreetingsComponent, DashboardComponent, DashboardTileComponent]
 })
