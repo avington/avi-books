@@ -1,8 +1,12 @@
 <avi-default-layout>
 
-  <p>
-    my-book-shelves works!
-  </p>
+  <h3>Your Bookshelves</h3>
+  <div class="book-shelves-list">
+    <div class="book-shelf" *ngFor="let item of bookShelves$ | async">
+      <avi-book-shelf-tile
+        [bookShelf]="item"></avi-book-shelf-tile>
+    </div>
+  </div>
 
 </avi-default-layout>
 

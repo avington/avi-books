@@ -1,8 +1,8 @@
 @import "../../../../styles/helpers/colors";
 
-.dashboard-tile-link {
+.bookshelf-tile-link {
   display: inline-block;
-  background-color: $deep-purple-800;
+  background-color: $blue-800;
   color: $blue-grey-50;
 
   .tile-content {
@@ -18,5 +18,11 @@
 .title {
   width: 100%;
   text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
+.status {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}

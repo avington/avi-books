@@ -12,13 +12,15 @@ export class GoAction implements Action {
     path: any[],
     query?: object,
     extras?: NavigationExtras
-  }){}
+  }) {
+  }
 }
 
 export class BackAction implements Action {
   readonly type: string = BACK;
 
 }
+
 export class ForwardAction implements Action {
   readonly type: string = FORWARD;
 

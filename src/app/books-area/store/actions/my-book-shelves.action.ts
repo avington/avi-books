@@ -7,9 +7,9 @@ import { MyBookShelves } from '../../models/my-book-shelves';
  * enum object for all of this group's action types.
  */
 export enum MyBooksActionTypes {
-  LOAD_MY_BOOKS = '[MyBooks] LOAD_MY_BOOKSHELVES',
-  LOAD_MY_BOOKS_SUCCESS = '[MyBooks] LOAD_MY_BOOKSHELVES_SUCCESS',
-  LOAD_MY_BOOKS_FAILED = '[MyBooks] LOAD_MY_BOOKSHELVES_FAILED'
+  LOAD_MY_BOOKSHELVES = '[MyBooks] LOAD_MY_BOOKSHELVES',
+  LOAD_MY_BOOKSHELVES_SUCCESS = '[MyBooks] LOAD_MY_BOOKSHELVES_SUCCESS',
+  LOAD_MY_BOOKSHELVES_FAILED = '[MyBooks] LOAD_MY_BOOKSHELVES_FAILED'
 }
 
 /**
@@ -18,18 +18,18 @@ export enum MyBooksActionTypes {
  * type checking in reducer functions.
  */
 export class LoadMyBookShelves implements Action {
-  readonly type = MyBooksActionTypes.LOAD_MY_BOOKS;
+  readonly type = MyBooksActionTypes.LOAD_MY_BOOKSHELVES;
 
   public payload: any;
 }
 export class LoadMyBookShelvesSuccess implements Action {
-  readonly type = MyBooksActionTypes.LOAD_MY_BOOKS_SUCCESS;
+  readonly type = MyBooksActionTypes.LOAD_MY_BOOKSHELVES_SUCCESS;
 
   constructor(public payload: MyBookShelves) {}
 }
 
 export class LoadMyBookShelvesFailed implements Action {
-  readonly type = MyBooksActionTypes.LOAD_MY_BOOKS_FAILED;
+  readonly type = MyBooksActionTypes.LOAD_MY_BOOKSHELVES_FAILED;
 
   constructor(public payload: any) {}
 }
@@ -38,7 +38,7 @@ export class LoadMyBookShelvesFailed implements Action {
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type MyBooksActions =
+export type MyBookShelvesActions =
   | LoadMyBookShelves
   | LoadMyBookShelvesSuccess
   | LoadMyBookShelvesFailed;

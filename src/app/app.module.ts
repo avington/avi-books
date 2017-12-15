@@ -25,6 +25,7 @@ import { accountEffects } from './store/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AddTokenService } from './interceptors/add-token.service';
+import {SharedModule} from './shared/shared.module';
 
 const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -37,6 +38,7 @@ const metaReducers: MetaReducer<any>[] = !environment.production
     BrowserModule,
     AppRoutingModule,
     LayoutsModule,
+    SharedModule,
     HomeAreaModule,
     AccountAreaModule,
     BrowserAnimationsModule,

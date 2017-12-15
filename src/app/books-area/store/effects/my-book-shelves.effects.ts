@@ -14,7 +14,7 @@ export class MyBooksEffects {
 
   @Effect()
   myBooks$: Observable<Action> = this.actions$.ofType(
-    fromActions.MyBooksActionTypes.LOAD_MY_BOOKS
+    fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES
   ).pipe(
     switchMap(() => {
       return this.bookHttpService.getMyLibraryBooksSelves()

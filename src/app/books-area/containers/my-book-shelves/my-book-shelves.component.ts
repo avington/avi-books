@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import * as fromStore from '../../store';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {BookShelf} from '../../models/book-shelf';
+
+// stores
+import * as fromStore from '../../store';
+import * as fromRootStore from '../../../store';
 
 @Component({
   selector: 'avi-my-book-shelves',
@@ -9,12 +14,13 @@ import {Store} from '@ngrx/store';
 })
 export class MyBookShelvesComponent implements OnInit {
 
-  constructor(
-    private store: Store<fromStore.BooksState>
-  ) { }
+  bookShelves$: Observable<BookShelf[]>;
+
+  constructor(private store: Store<fromStore.BooksState>) {
+  }
 
   ngOnInit() {
-    this.store.dispatch(new fromStore.LoadMyBookShelves());
+    this.bookShelves$ = this.store.select(fromStore.getMyBookShelvesList);
   }
 
 }

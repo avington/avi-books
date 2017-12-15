@@ -7,7 +7,7 @@ describe('my-book-selves Actions', () => {
     describe('LoadMyBookShelves', () => {
       it('should create an action', () => {
         const action = new fromMyBookShelves.LoadMyBookShelves();
-        expect(action.type).toBe(fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKS);
+        expect(action.type).toBe(fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKSHELVES);
       });
     });
 
@@ -46,7 +46,7 @@ describe('my-book-selves Actions', () => {
         const action = new fromMyBookShelves.LoadMyBookShelvesSuccess(payload);
 
         expect({ ...action }).toEqual({
-          type: fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKS_SUCCESS,
+          type: fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKSHELVES_SUCCESS,
           payload: payload
         });
       });
@@ -59,7 +59,7 @@ describe('my-book-selves Actions', () => {
           const action = new fromMyBookShelves.LoadMyBookShelvesFailed(payload);
 
           expect({ ...action }).toEqual({
-            type: fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKS_FAILED,
+            type: fromMyBookShelves.MyBooksActionTypes.LOAD_MY_BOOKSHELVES_FAILED,
             payload: payload
           });
         });

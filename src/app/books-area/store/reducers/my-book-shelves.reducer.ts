@@ -1,30 +1,28 @@
 import * as fromActions from '../actions';
-import { BookShelf } from '../../models/book-shelf';
+import {BookShelf} from '../../models/book-shelf';
 
-export interface MyBookState {
+export interface MyBookShelvesState {
   entities: { [id: number]: BookShelf };
   loading: boolean;
   loaded: boolean;
 }
 
-export const initialState: MyBookState = {
+export const initialState: MyBookShelvesState = {
   entities: {},
   loading: false,
   loaded: false
 };
 
-export function reducer(
-  state = initialState,
-  action: fromActions.MyBooksActions
-): MyBookState {
+export function reducer(state = initialState,
+                        action: fromActions.MyBookShelvesActions): MyBookShelvesState {
   switch (action.type) {
-    case fromActions.MyBooksActionTypes.LOAD_MY_BOOKS: {
+    case fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES: {
       return {
         ...state,
         loading: true
       };
     }
-    case fromActions.MyBooksActionTypes.LOAD_MY_BOOKS_SUCCESS: {
+    case fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES_SUCCESS: {
       const books = action.payload.items;
 
       const entities = books.reduce(
@@ -54,6 +52,6 @@ export function reducer(
   }
 }
 
-export const getMyBooksEntities = (state: MyBookState) => state.entities;
-export const getMyBooksLoaded = (state: MyBookState) => state.loaded;
-export const getMyBooksLoading = (state: MyBookState) => state.loading;
+export const getMyBookShelvesEntities = (state: MyBookShelvesState) => state.entities;
+export const getMyBookShelvesLoaded = (state: MyBookShelvesState) => state.loaded;
+export const getMyBookShelvesLoading = (state: MyBookShelvesState) => state ? state.loading : false;

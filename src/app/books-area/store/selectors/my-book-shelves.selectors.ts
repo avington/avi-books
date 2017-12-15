@@ -1,30 +1,36 @@
 import {
-  getMyBooksEntities,
-  getMyBooksLoaded,
-  getMyBooksLoading
+  getMyBookShelvesEntities,
+  getMyBookShelvesLoaded,
+  getMyBookShelvesLoading
 } from '../reducers/my-book-shelves.reducer';
-import { createSelector } from '@ngrx/store';
+import {createSelector} from '@ngrx/store';
 import * as fromFeature from '../reducers';
+import * as _ from 'lodash';
 
 export const getMyBooksState = createSelector(
   fromFeature.getBooksState,
   (state: fromFeature.BooksState) => {
-    console.log(state);
-    return state.myBooks;
+    return _.get(state, 'myBooks');
   }
 );
 
-export const getMyBooksEntitiesFromState = createSelector(
+export const getMyBookShelvesEntitiesFromState = createSelector(
   getMyBooksState,
-  getMyBooksEntities
+  getMyBookShelvesEntities,
 );
 
-export const getMyBooksLoadedFromState = createSelector(
+export const getMyBookShelvesLoadedFromState = createSelector(
   getMyBooksState,
-  getMyBooksLoaded
+  getMyBookShelvesLoaded
 );
 
-export const getMyBooksLoadingFromState = createSelector(
+export const getMyBookShelvesLoadingFromState = createSelector(
   getMyBooksState,
-  getMyBooksLoading
+  getMyBookShelvesLoading
+);
+
+export const getMyBookShelvesList = createSelector(
+  getMyBookShelvesEntitiesFromState, (entities) => {
+    return Object.keys(entities).map(key => entities[key]);
+  }
 );
