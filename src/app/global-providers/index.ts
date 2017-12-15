@@ -9,10 +9,5 @@ export const GLOBAL_PROVIDERS: Array<any> = [
   GoogleAuthService,
   ProfileDataService,
   WindowReferenceService,
-  AuthHelperService,
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AddTokenService,
-    multi: true
-  }
+  AuthHelperService
 ];

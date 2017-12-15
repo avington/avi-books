@@ -16,12 +16,23 @@ export const initialState: MyBookShelvesState = {
 export function reducer(state = initialState,
                         action: fromActions.MyBookShelvesActions): MyBookShelvesState {
   switch (action.type) {
+
     case fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES: {
       return {
         ...state,
         loading: true
       };
     }
+
+    case fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES_FAILED: {
+      return {
+        ...state,
+        loading: false,
+        loaded: false
+      };
+    }
+
+
     case fromActions.MyBooksActionTypes.LOAD_MY_BOOKSHELVES_SUCCESS: {
       const books = action.payload.items;
 

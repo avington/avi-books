@@ -17,6 +17,7 @@ import { BookShelfTileComponent } from './components/book-shelf-tile/book-shelf-
 import {SharedModule} from '../shared/shared.module';
 import {CheckBookSelfExistGuard} from './guards/check-book-self-exist.guard';
 import { MyBookShelfComponent } from './containers/my-book-shelf/my-book-shelf.component';
+import {INTERCEPTORS} from '../interceptors';
 
 
 const ROUTES: Routes = [
@@ -37,6 +38,7 @@ const ROUTES: Routes = [
   declarations: [MyBookShelvesComponent, BookShelfTileComponent, MyBookShelfComponent, MyBookShelfComponent],
   providers: [
     ...GLOBAL_PROVIDERS,
+    ...INTERCEPTORS,
     ...BOOKS_AREA_SERVICES,
     ...BOOKS_AREA_GUARDS,
     {provide: RouterStateSerializer, useClass: CustomSerializer}

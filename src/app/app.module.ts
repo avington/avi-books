@@ -26,6 +26,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AddTokenService } from './interceptors/add-token.service';
 import {SharedModule} from './shared/shared.module';
+import {INTERCEPTORS} from './interceptors';
 
 const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -48,6 +49,7 @@ const metaReducers: MetaReducer<any>[] = !environment.production
   ],
   providers: [
     ...GLOBAL_PROVIDERS,
+    ...INTERCEPTORS,
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
   bootstrap: [AppComponent]
