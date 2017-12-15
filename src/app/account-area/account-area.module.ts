@@ -6,6 +6,7 @@ import {OathCallbackPageComponent} from './components/oath-callback-page/oath-ca
 import {StoreModule} from '@ngrx/store';
 import {reducers} from './store/reducers';
 import {SharedModule} from '../shared/shared.module';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import {SharedModule} from '../shared/shared.module';
     StoreModule.forFeature('account', reducers),
     EffectsModule.forFeature(effects)
   ],
-  declarations: [OathCallbackPageComponent]
+  declarations: [OathCallbackPageComponent, LoginPageComponent]
 })
 export class AccountAreaModule {
 }

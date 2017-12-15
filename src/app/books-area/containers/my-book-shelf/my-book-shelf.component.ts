@@ -18,9 +18,11 @@ export class MyBookShelfComponent implements OnInit {
   ngOnInit() {
     this.store.select(fromStore.getSelectedBookShelfFromShelves).pipe(
       switchMap((bookShelf) => {
+        // TODO: once bookshelf from list is loaded dispatch an action to load the bookshelf details
         return of(bookShelf);
       })
-    )
+    );
+
   }
 
 }
