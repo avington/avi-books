@@ -16,7 +16,10 @@ import { AccountAreaModule } from './account-area/account-area.module';
 import { environment } from '../environments/environment';
 import { storeFreeze } from 'ngrx-store-freeze';
 
-import { RouterStateSerializer } from '@ngrx/router-store';
+import {
+  RouterStateSerializer,
+  StoreRouterConnectingModule
+} from '@ngrx/router-store';
 import { CustomSerializer, reducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -25,8 +28,8 @@ import { accountEffects } from './store/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AddTokenService } from './interceptors/add-token.service';
-import {SharedModule} from './shared/shared.module';
-import {INTERCEPTORS} from './interceptors';
+import { SharedModule } from './shared/shared.module';
+import { INTERCEPTORS } from './interceptors';
 
 const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
@@ -35,7 +38,9 @@ const metaReducers: MetaReducer<any>[] = !environment.production
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
     BrowserModule,
     AppRoutingModule,
     LayoutsModule,
@@ -45,6 +50,7 @@ const metaReducers: MetaReducer<any>[] = !environment.production
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([...accountEffects]),
+    StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [

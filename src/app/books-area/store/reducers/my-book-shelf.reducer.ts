@@ -1,4 +1,5 @@
-import {BookShelfDetail} from '../../models/book-shelf-detail';
+import { MyBookShelfState } from './my-book-shelf.reducer';
+import { BookShelfDetail } from '../../models/book-shelf-detail';
 import * as fromActions from '../actions';
 
 export interface MyBookShelfState {
@@ -8,15 +9,16 @@ export interface MyBookShelfState {
 }
 
 export const initialState: MyBookShelfState = {
-  entity: {},
+  entity: null,
   loading: false,
   loaded: false
 };
 
-export function reducer(state = initialState,
-                        action: fromActions.BookShelfActions): MyBookShelfState {
+export function reducer(
+  state = initialState,
+  action: fromActions.BookShelfActions
+): MyBookShelfState {
   switch (action.type) {
-
     case fromActions.BookShelfActionTypes.LOAD_BOOKS_SHELF: {
       return {
         ...state,
@@ -34,7 +36,7 @@ export function reducer(state = initialState,
 
     case fromActions.BookShelfActionTypes.LOAD_BOOK_SHELF_SUCCESS: {
       const entity = action.payload;
-
+      console.log('success', action);
       return {
         ...state,
         loading: false,
@@ -49,3 +51,6 @@ export function reducer(state = initialState,
   }
 }
 
+export const getShelfEntities = (state: MyBookShelfState) => state.entity;
+export const getShelfLoaded = (state: MyBookShelfState) => state.loaded;
+export const getShelfLoading = (state: MyBookShelfState) => state.loading;
