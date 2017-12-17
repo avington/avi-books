@@ -1,0 +1,10 @@
+<div class="image-title">
+  <figure>
+    <img [src]="volume?.volumeInfo.imageLinks.smallThumbnail" [alt]="volume?.volumeInfo.title">
+  </figure>
+  <div class="title">
+    <h4>{{volume?.volumeInfo.title}}</h4>
+    <h5>{{volume?.volumeInfo?.subtitle}}</h5>
+    <p>by: {{volume?.volumeInfo}}</p>
+  </div>
+</div>

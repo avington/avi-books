@@ -1,6 +1,13 @@
 <avi-default-layout>
-  <p>
-    my-book-shelf works!
-  </p>
+  <div class="book-shelf-container">
+    <h3 class="heading">
+      Shelf: {{bookShelf?.title}}
+    </h3>
+    <div class="volumes-list">
+      <div class="volume-item" *ngFor="let volume of volumes$ | async">
+        <avi-volume-display [volume]="volume"></avi-volume-display>
+      </div>
+    </div>
+  </div>
 
 </avi-default-layout>

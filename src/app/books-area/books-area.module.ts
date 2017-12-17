@@ -18,6 +18,7 @@ import {SharedModule} from '../shared/shared.module';
 import {CheckBookSelfExistGuard} from './guards/check-book-self-exist.guard';
 import { MyBookShelfComponent } from './containers/my-book-shelf/my-book-shelf.component';
 import {INTERCEPTORS} from '../interceptors';
+import { VolumeDisplayComponent } from './components/volume-display/volume-display.component';
 
 
 const ROUTES: Routes = [
@@ -35,7 +36,7 @@ const ROUTES: Routes = [
     StoreModule.forFeature('books', fromStore.reducers),
     EffectsModule.forFeature([...fromStore.effects]),
   ],
-  declarations: [MyBookShelvesComponent, BookShelfTileComponent, MyBookShelfComponent, MyBookShelfComponent],
+  declarations: [MyBookShelvesComponent, BookShelfTileComponent, MyBookShelfComponent, MyBookShelfComponent, VolumeDisplayComponent],
   providers: [
     ...GLOBAL_PROVIDERS,
     ...INTERCEPTORS,
