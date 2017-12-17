@@ -39,3 +39,13 @@ export const getMyBookShelfLoading = createSelector(
   getMyBookShelfState,
   getShelfLoading
 );
+
+export const getMyBookShelfVolumesList = createSelector(
+  getMyBookShelfEntity,
+  entities => {
+    if (!entities) {
+      return null;
+    }
+    return Object.keys(entities).map(key => entities[key]);
+  }
+);

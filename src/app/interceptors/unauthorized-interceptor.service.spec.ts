@@ -1,3 +1,4 @@
+import { StoreModule } from '@ngrx/store';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { UnauthorizedInterceptorService } from './unauthorized-interceptor.service';
@@ -5,11 +6,18 @@ import { UnauthorizedInterceptorService } from './unauthorized-interceptor.servi
 describe('UnauthorizedInterceptorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UnauthorizedInterceptorService]
+      providers: [UnauthorizedInterceptorService],
+      imports: [StoreModule.forRoot({})]
     });
   });
 
-  it('should be created', inject([UnauthorizedInterceptorService], (service: UnauthorizedInterceptorService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject(
+      [UnauthorizedInterceptorService],
+      (service: UnauthorizedInterceptorService) => {
+        expect(service).toBeTruthy();
+      }
+    )
+  );
 });

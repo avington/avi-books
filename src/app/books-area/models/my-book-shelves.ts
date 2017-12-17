@@ -1,6 +1,6 @@
-import { BookShelf } from "./book-shelf";
+import { BookShelf } from './book-shelf';
 
 export interface MyBookShelves {
-    kind: string;
-    items: BookShelf[];
+  kind: string;
+  items: BookShelf[];
 }

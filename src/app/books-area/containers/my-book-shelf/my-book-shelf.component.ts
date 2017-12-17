@@ -1,4 +1,7 @@
-import { getMyBookShelfEntity } from './../../store/selectors/my-book-self.selectors';
+import {
+  getMyBookShelfEntity,
+  getMyBookShelfVolumesList
+} from './../../store/selectors/my-book-self.selectors';
 import { Component, OnInit } from '@angular/core';
 import * as fromStore from '../../store';
 import { Store } from '@ngrx/store';
@@ -21,7 +24,7 @@ export class MyBookShelfComponent implements OnInit {
       );
 
     this.store
-      .select(fromStore.getMyBookShelfEntity)
-      .subscribe(entitiy => console.log(entitiy));
+      .select(fromStore.getMyBookShelfVolumesList)
+      .subscribe(volumes => console.log(volumes));
   }
 }

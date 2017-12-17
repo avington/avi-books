@@ -1,22 +1,25 @@
-import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
-import {filter, map, switchMap, take, tap} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot
+} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 
 // store
 import * as fromStore from '../store';
-import {BookShelf} from '../models/book-shelf';
-
+import { BookShelf } from '../models/book-shelf';
 
 @Injectable()
 export class CheckBookSelfExistGuard implements CanActivate {
+  constructor(private store: Store<fromStore.BooksState>) {}
 
-  constructor(private store: Store<fromStore.BooksState>) {
-  }
-
-  canActivate(next: ActivatedRouteSnapshot,
-              state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
     return this.checkStore().pipe(
       switchMap(() => {
         console.log(next.params);
@@ -26,11 +29,13 @@ export class CheckBookSelfExistGuard implements CanActivate {
     );
   }
 
-  hasBookSelf(id: number): Observable<boolean>  {
-    return this.store.select(fromStore.getMyBookShelvesEntitiesFromState).pipe(
-      map((entities: { [key: number]: BookShelf }) => !! entities[id]),
-      take(1)
-    );
+  hasBookSelf(id: number): Observable<boolean> {
+    return this.store
+      .select(fromStore.getMyBookShelvesEntitiesFromState)
+      .pipe(
+        map((entities: { [key: number]: BookShelf }) => !!entities[id]),
+        take(1)
+      );
   }
 
   checkStore(): Observable<boolean> {

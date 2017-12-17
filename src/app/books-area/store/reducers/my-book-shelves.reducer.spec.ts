@@ -1,12 +1,11 @@
 import * as fromMyBookShelves from './my-book-shelves.reducer';
 import * as fromActions from '../actions';
-import {MyBookShelves} from '../../models/my-book-shelves';
+import { MyBookShelves } from '../../models/my-book-shelves';
 
 describe('my-book-shelves Reducers', () => {
-
   describe('undefined action', () => {
     it('should return the default state', () => {
-      const {initialState} = fromMyBookShelves;
+      const { initialState } = fromMyBookShelves;
       const action = {} as any;
       const state = fromMyBookShelves.reducer(undefined, action);
       expect(state).toBe(initialState);
@@ -15,7 +14,7 @@ describe('my-book-shelves Reducers', () => {
 
   describe('Load My Shelves Action', () => {
     it('should set loading to true', () => {
-      const {initialState} = fromMyBookShelves;
+      const { initialState } = fromMyBookShelves;
       const action = new fromActions.LoadMyBookShelves();
       const state = fromMyBookShelves.reducer(initialState, action);
 
@@ -23,12 +22,10 @@ describe('my-book-shelves Reducers', () => {
       expect(state.loaded).toBe(false);
       expect(state.entities).toEqual({});
     });
-
   });
 
   describe('Load My Shelves SUCCESS Action', () => {
     it('should set loading to true', () => {
-
       const payload: MyBookShelves = {
         kind: 'books#bookshelves',
         items: [
@@ -64,8 +61,7 @@ describe('my-book-shelves Reducers', () => {
         1: payload.items[1]
       };
 
-
-      const {initialState} = fromMyBookShelves;
+      const { initialState } = fromMyBookShelves;
       const action = new fromActions.LoadMyBookShelvesSuccess(payload);
       const state = fromMyBookShelves.reducer(initialState, action);
 
@@ -73,7 +69,5 @@ describe('my-book-shelves Reducers', () => {
       expect(state.loaded).toBe(true);
       expect(state.entities).toEqual(entities);
     });
-
   });
 });
-

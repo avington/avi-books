@@ -1,3 +1,4 @@
+import { VolumeInfo } from './volume-info';
 import { SaleInfo } from './sale-info';
 import { AccessInfo } from './access-info';
 export interface Volume {
@@ -16,4 +17,5 @@ export interface Volume {
     isInMyBooks: boolean;
     updated: string;
   };
+  volume?: VolumeInfo;
 }

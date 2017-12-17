@@ -1,15 +1,16 @@
+import { Volume } from './../../models/volume';
 import { MyBookShelfState } from './my-book-shelf.reducer';
 import { BookShelfDetail } from '../../models/book-shelf-detail';
 import * as fromActions from '../actions';
 
 export interface MyBookShelfState {
-  entity: BookShelfDetail;
+  entities: { [id: string]: Volume };
   loading: boolean;
   loaded: boolean;
 }
 
 export const initialState: MyBookShelfState = {
-  entity: null,
+  entities: null,
   loading: false,
   loaded: false
 };
@@ -35,13 +36,25 @@ export function reducer(
     }
 
     case fromActions.BookShelfActionTypes.LOAD_BOOK_SHELF_SUCCESS: {
-      const entity = action.payload;
-      console.log('success', action);
+      const books = action.payload.items;
+
+      const entities = books.reduce(
+        // tslint:disable-next-line:no-shadowed-variable
+        (entities: { [id: string]: Volume }, book: Volume) => {
+          return {
+            ...entities,
+            [book.id]: book
+          };
+        },
+        {
+          ...state.entities
+        }
+      );
       return {
         ...state,
         loading: false,
         loaded: true,
-        entity
+        entities
       };
     }
 
@@ -51,6 +64,6 @@ export function reducer(
   }
 }
 
-export const getShelfEntities = (state: MyBookShelfState) => state.entity;
+export const getShelfEntities = (state: MyBookShelfState) => state.entities;
 export const getShelfLoaded = (state: MyBookShelfState) => state.loaded;
 export const getShelfLoading = (state: MyBookShelfState) => state.loading;
