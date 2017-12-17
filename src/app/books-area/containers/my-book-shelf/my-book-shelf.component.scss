@@ -1,0 +1,17 @@
+.book-shelf-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+}
+
+.volumes-list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 2rem;
+
+  .volume-item {
+    width: 100%;
+  }
+}
