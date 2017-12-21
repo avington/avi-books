@@ -1,20 +1,15 @@
 import { BookShelf } from './../../models/book-shelf';
 import { Volume } from './../../models/volume';
-import {
-  getMyBookShelfEntity,
-  getMyBookShelfVolumesList
-} from './../../store/selectors/my-book-self.selectors';
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import * as fromStore from '../../store';
 import { Store } from '@ngrx/store';
-import { switchMap, map } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'avi-my-book-shelf',
   templateUrl: './my-book-shelf.component.html',
-  styleUrls: ['./my-book-shelf.component.scss']
+  styleUrls: ['./my-book-shelf.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyBookShelfComponent implements OnInit {
   constructor(private store: Store<fromStore.BooksState>) {}

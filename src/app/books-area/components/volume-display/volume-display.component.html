@@ -1,10 +1,11 @@
-<div class="image-title">
+<s class="image-title card">
   <figure>
     <img [src]="volume?.volumeInfo.imageLinks.smallThumbnail" [alt]="volume?.volumeInfo.title">
   </figure>
-  <div class="title">
-    <h4>{{volume?.volumeInfo.title}}</h4>
-    <h5>{{volume?.volumeInfo?.subtitle}}</h5>
-    <p>by: {{volume?.volumeInfo}}</p>
+  <div class="title-area">
+    <p class="title">{{volume?.volumeInfo.title}}</p>
+    <p class="sub-title">{{volume?.volumeInfo?.subtitle}}</p>
+    <p class="authors">by: {{authors}}</p>
+    <avi-rating-stars [averageRating]="volume?.volumeInfo?.averageRating"></avi-rating-stars>
   </div>
-</div>
+</s>

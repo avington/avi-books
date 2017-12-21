@@ -1,0 +1,16 @@
+.stars-legend {
+  grid-area: legend;
+}
+
+.stars {
+  grid-area: starsrow;
+}
+
+.stars-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-items: start;
+  grid-template-areas:
+    "legend starsrow";
+}
