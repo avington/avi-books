@@ -1,6 +1,6 @@
-import { Volume } from './../../models/volume';
-import { MyBookShelfState } from './my-book-shelf.reducer';
-import { BookShelfDetail } from '../../models/book-shelf-detail';
+import {Volume} from './../../models/volume';
+import {MyBookShelfState} from './my-book-shelf.reducer';
+import {BookShelfDetail} from '../../models/book-shelf-detail';
 import * as fromActions from '../actions';
 
 export interface MyBookShelfState {
@@ -15,10 +15,8 @@ export const initialState: MyBookShelfState = {
   loaded: false
 };
 
-export function reducer(
-  state = initialState,
-  action: fromActions.BookShelfActions
-): MyBookShelfState {
+export function reducer(state = initialState,
+                        action: fromActions.BookShelfActions): MyBookShelfState {
   switch (action.type) {
     case fromActions.BookShelfActionTypes.LOAD_BOOKS_SHELF: {
       return {
@@ -66,4 +64,4 @@ export function reducer(
 
 export const getShelfEntities = (state: MyBookShelfState) => state.entities;
 export const getShelfLoaded = (state: MyBookShelfState) => state.loaded;
-export const getShelfLoading = (state: MyBookShelfState) => state.loading;
+export const getShelfLoading = (state: MyBookShelfState) => state ? state.loading : false;

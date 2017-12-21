@@ -17,5 +17,5 @@ export interface Volume {
     isInMyBooks: boolean;
     updated: string;
   };
-  volume?: VolumeInfo;
+  volumeInfo?: VolumeInfo;
 }
