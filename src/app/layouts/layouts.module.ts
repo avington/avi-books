@@ -4,11 +4,13 @@ import { DefaultLayoutComponent } from './default-layout/default-layout.componen
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { DefaultFooterComponent } from './default-footer/default-footer.component';
 import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     DefaultLayoutComponent, DefaultHeaderComponent, DefaultFooterComponent

@@ -5,8 +5,11 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {Profile} from '../../account-area/models/profile';
 import * as profileActions from '../../account-area/store/actions/profile-actions';
+import * as fromAccountStore from './../../account-area/store';
 import {GoogleAuthService} from '../../global-providers/google-auth.service';
 import {WindowReferenceService} from '../../global-providers/window-reference.service';
+import {AuthHelperService} from '../../global-providers/auth-helper.service';
+import {Token} from '../../account-area/models/token';
 
 @Component({
   selector: 'avi-default-header',
@@ -33,7 +36,8 @@ export class DefaultHeaderComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
               private auth: GoogleAuthService,
-              private winRef: WindowReferenceService) {
+              private winRef: WindowReferenceService,
+              private authHelper: AuthHelperService) {
     this.profile$ = this.store.select(s => s.profile);
   }
 
@@ -50,6 +54,9 @@ export class DefaultHeaderComponent implements OnInit {
 
   private getProfile(): any {
     this.store.dispatch(new profileActions.LoadProfileAction());
+    this.store.select(fromAccountStore.getTokenFromState).subscribe((token: Token) => {
+      this.isLoggedIn = this.authHelper.isAuthenticated(token);
+    });
   }
 
 

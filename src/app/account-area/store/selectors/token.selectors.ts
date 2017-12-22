@@ -6,5 +6,7 @@ export const getTokenState = createSelector(
   ((state: fromFeature.AccountState) => state.token));
 
 export const getTokenFromState = createSelector(
-  getTokenState,(state) => state.token
+  getTokenState, (state) => state.token
 );
+
+

@@ -7,9 +7,9 @@ import {LoginPageComponent} from './account-area/containers/login-page/login-pag
 
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'oath2/callback', component: OathCallbackPageComponent },
+  { path: '', component: HomePageComponent},
   { path: 'login', component: LoginPageComponent },
+  { path: 'oath2/callback', component: OathCallbackPageComponent },
   {
     path: 'books',
     loadChildren: './books-area/books-area.module#BooksAreaModule'

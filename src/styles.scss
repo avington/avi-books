@@ -1,6 +1,10 @@
 // base
 @import 'styles/base/reset';
 @import 'styles/base/elements';
+@import 'styles/base/global';
+
+// material
+@import "styles/themes/material";
 
 // helpers
 @import 'styles/helpers/colors';

@@ -21,5 +21,13 @@
         <a routerLink="registter">Register</a>
       </li>
     </ul>
+    <ul *ngIf="isLoggedIn">
+      <li>
+        <a routerLink="/books/search">Search Books</a>
+      </li>
+      <li>
+        <a routerLink="books">My Books</a>
+      </li>
+    </ul>
   </nav>
 </div>

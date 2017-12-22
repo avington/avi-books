@@ -8,13 +8,19 @@ import {
   HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { tap } from 'rxjs/Operators';
 import * as fromRootStore from '../store';
 import { Store } from '@ngrx/store';
+import {LocalStorage} from 'ngx-webstorage';
+import {Token} from '../account-area/models/token';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class UnauthorizedInterceptorService implements HttpInterceptor {
+
   private payload: any;
+
+  @LocalStorage()
+  token: Token;
 
   constructor(private store: Store<any>) {}
 
@@ -33,8 +39,9 @@ export class UnauthorizedInterceptorService implements HttpInterceptor {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
               this.payload = {
-                path: 'login'
+                path: ['/']
               };
+              this.token = null;
               this.store.dispatch(new fromRootStore.GoAction(this.payload));
             }
           }

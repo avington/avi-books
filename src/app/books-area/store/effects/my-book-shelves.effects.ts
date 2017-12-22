@@ -5,7 +5,6 @@ import {Actions, Effect} from '@ngrx/effects';
 import * as fromActions from '../actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {BooksHttpService} from '../../services/books-http.service';
-import {BookVolume} from '../../models/book-volume';
 import {of} from 'rxjs/observable/of';
 
 @Injectable()

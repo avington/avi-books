@@ -1,24 +1,26 @@
-import { Injectable } from "@angular/core";
-import { Token } from "../account-area/models/token";
-import { isNil, has } from "lodash";
-import * as moment from "moment";
+import { Injectable } from '@angular/core';
+import { Token } from '../account-area/models/token';
+import { isNil, has } from 'lodash';
+import * as moment from 'moment';
 
 @Injectable()
 export class AuthHelperService {
   constructor() {}
 
   isAuthenticated(token: Token): boolean {
-    if (!has(token, "accessToken") || !token.accessToken) {
+    if (!has(token, 'accessToken') || !token.accessToken) {
       return false;
     }
-
-    if (typeof token.timeCreated === "string") {
-      token.timeCreated = new Date(token.timeCreated);
+    let timeCreated: Date;
+    if (typeof token.timeCreated === 'string') {
+      timeCreated = new Date(token.timeCreated);
+    } else {
+      timeCreated = token.timeCreated;
     }
 
     const expiredDate = new Date(
-      token.timeCreated.setSeconds(
-        token.timeCreated.getSeconds() + parseInt(token.expiresIn, 10)
+      timeCreated.setSeconds(
+        timeCreated.getSeconds() + parseInt(token.expiresIn, 10)
       )
     );
 

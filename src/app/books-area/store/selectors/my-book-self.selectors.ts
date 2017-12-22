@@ -21,7 +21,6 @@ export const getSelectedBookShelfFromShelves = createSelector(
 export const getMyBookShelfState = createSelector(
   fromFeature.getBooksState,
   state => {
-    console.log(state);
     return _.get(state, 'myBookShelf');
   }
 );
