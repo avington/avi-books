@@ -1,0 +1,15 @@
+<form [formGroup]="searchBooksForm">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Search Books" formControlName="searchBooks" [matAutocomplete]="auto">
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let volume of volumes" [value]="volume.volumeInfo.title">
+      <img style="vertical-align:middle;" aria-hidden src="{{volume.volumeInfo.imageLinks.smallThumbnail}}" height="25" width="25"
+      />
+      <span>{{ volume.volumeInfo.title }}</span> |
+      <small>By: {{volume.volumeInfo.authors.join(', ')}}</small>
+    </mat-option>
+  </mat-autocomplete>
+
+</form>

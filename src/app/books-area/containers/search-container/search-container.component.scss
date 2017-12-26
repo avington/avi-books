@@ -1,14 +1,19 @@
-@import "../../../../styles/helpers/colors";
+@import '../../../../styles/helpers/colors';
+
+.search-box-container {
+  width: 95%;
+}
 
 .search-field-container {
   width: 90%;
-  margin: 10.0rem auto 10.0rem auto;
+  margin: 10rem auto 10rem auto;
   border: 1px solid $blue-grey-50;
-  padding: 5.00rem 0 5.00rem 0;
+  padding: 5rem 0 5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
-
+.heading {
+  margin: 1.5rem 0 1.5rem 0;
+}

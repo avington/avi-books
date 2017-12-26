@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Action} from '@ngrx/store';
-import {Actions, Effect} from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Action } from '@ngrx/store';
+import { Actions, Effect } from '@ngrx/effects';
 import * as fromActions from '../actions/search-book.actions';
 import {
   catchError,
@@ -9,22 +9,21 @@ import {
   distinctUntilChanged,
   filter,
   map,
-  switchMap, tap
+  switchMap,
+  tap
 } from 'rxjs/operators';
 import * as _ from 'lodash';
-import {BooksHttpService} from '../../services/books-http.service';
-import {of} from 'rxjs/observable/of';
+import { BooksHttpService } from '../../services/books-http.service';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class SearchBooksEffects {
-
   @Effect()
   searchBooks$: Observable<Action> = this.actions$
     .ofType(fromActions.SearchBooksActionTypes.SEARCH_BOOKS)
     .pipe(
       map((action: fromActions.SearchBooksAction) => {
-        const s = action.payload;
-        return _.get(s, 'searchBooks', '');
+        return action.payload;
       }),
       filter((term: string) => {
         return term.length > 2;
@@ -32,15 +31,17 @@ export class SearchBooksEffects {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((term: string) => {
-        console.log('this is the term', term)
-        return this.booksHttp.searchBooks(term)
+        return this.booksHttp
+          .searchBooks(term, 5, 'lite')
           .pipe(
-            map((searchResult) => new fromActions.SearchBooksSuccessAction(searchResult)),
+            map(
+              searchResult =>
+                new fromActions.SearchBooksSuccessAction(searchResult)
+            ),
             catchError(err => of(new fromActions.SearchBooksFailAction(err)))
           );
       })
-    )
+    );
 
-  constructor(private actions$: Actions, private booksHttp: BooksHttpService) {
-  }
+  constructor(private actions$: Actions, private booksHttp: BooksHttpService) {}
 }

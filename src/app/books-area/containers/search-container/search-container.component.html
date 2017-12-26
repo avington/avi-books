@@ -1,22 +1,9 @@
 <avi-default-layout>
 
   <div class="search-field-container">
-    <div class="heading">Search Books</div>
+    <div class="heading">Search for a book</div>
     <div class="search-box-container">
-      <form [formGroup]="searchBooksForm">
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Search Books" formControlName="searchBooks">
-        </mat-form-field>
-        <!--
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-        -->
-      </form>
+      <avi-search-panel [volumes]="volumes" (termChanged)="onTermChagned($event)" (termEnetered)="onTermEntered($event)"></avi-search-panel>
     </div>
   </div>
 </avi-default-layout>
-
-

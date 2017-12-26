@@ -1,22 +1,23 @@
+import { Volume } from './../../models/volume';
 import * as fromActions from '../actions/search-book.actions';
-import {Volume} from '../../models/volume';
 
 export interface SearchBooksState {
-  entities: { [id: string]: Volume };
+  entities: Volume[];
   loading: boolean;
   loaded: boolean;
 }
 
 export const initialState: SearchBooksState = {
-  entities: {},
+  entities: [],
   loading: false,
   loaded: false
 };
 
-export function reducer(state = initialState, action: fromActions.SearchBooksActions): SearchBooksState {
-
+export function reducer(
+  state = initialState,
+  action: fromActions.SearchBooksActions
+): SearchBooksState {
   switch (action.type) {
-
     case fromActions.SearchBooksActionTypes.SEARCH_BOOKS: {
       return {
         ...state,
@@ -28,20 +29,18 @@ export function reducer(state = initialState, action: fromActions.SearchBooksAct
       return {
         ...state,
         loading: false,
-        loaded: false,
+        loaded: false
       };
     }
 
     case fromActions.SearchBooksActionTypes.SEARCH_BOOKS_SUCCESS: {
-
-      // TODO: finish book success reducer
-      const entities = action.payload as any;
+      const books = action.payload.items;
 
       return {
         ...state,
         loading: false,
         loaded: true,
-        entities
+        entities: books
       };
     }
 
@@ -51,6 +50,7 @@ export function reducer(state = initialState, action: fromActions.SearchBooksAct
   }
 }
 
-export const getSearchBookEntities = ((state: SearchBooksState) => state.entities);
-export const getSearchBookLoaded = ((state: SearchBooksState) => state.loaded);
-export const getSearchBookLoading = ((state: SearchBooksState) => state.loading);
+export const getSearchBookEntities = (state: SearchBooksState) =>
+  state.entities;
+export const getSearchBookLoaded = (state: SearchBooksState) => state.loaded;
+export const getSearchBookLoading = (state: SearchBooksState) => state.loading;

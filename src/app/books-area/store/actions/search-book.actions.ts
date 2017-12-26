@@ -1,5 +1,6 @@
-import {Action} from '@ngrx/store';
-import {Volume} from '../../models/volume';
+import { SearchBooks } from './../../models/search-books';
+import { Action } from '@ngrx/store';
+import { Volume } from '../../models/volume';
 
 /**
  * For each action type in an action group, make a simple
@@ -19,29 +20,26 @@ export enum SearchBooksActionTypes {
 export class SearchBooksAction implements Action {
   readonly type = SearchBooksActionTypes.SEARCH_BOOKS;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 export class SearchBooksSuccessAction implements Action {
   readonly type = SearchBooksActionTypes.SEARCH_BOOKS_SUCCESS;
 
-  constructor(public payload: Volume[]) {
-  }
+  constructor(public payload: SearchBooks) {}
 }
 
 export class SearchBooksFailAction implements Action {
   readonly type = SearchBooksActionTypes.SEARCH_BOOKS_FAIL;
 
-  constructor(public payload: any) {
-  }
+  constructor(public payload: any) {}
 }
 
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type SearchBooksActions
-  = SearchBooksAction
+export type SearchBooksActions =
+  | SearchBooksAction
   | SearchBooksSuccessAction
   | SearchBooksFailAction;

@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Volume } from './../../models/volume';
+import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import * as fromBooksStore from '../../store';
-import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'avi-search-container',
@@ -9,22 +11,21 @@ import {Store} from '@ngrx/store';
   styleUrls: ['./search-container.component.scss']
 })
 export class SearchContainerComponent implements OnInit {
-
   searchBooksForm: FormGroup;
+  volumes: Volume[];
 
-  constructor(private fb: FormBuilder, private store: Store<fromBooksStore.BooksState>) {
+  constructor(private store: Store<fromBooksStore.BooksState>) {}
+
+  ngOnInit() {}
+
+  onTermChagned($event) {
+    this.store.dispatch(new fromBooksStore.SearchBooksAction($event));
+    this.store
+      .select(fromBooksStore.getSearchBooksEntities)
+      .subscribe(volumes => {
+        this.volumes = [...volumes];
+      });
   }
 
-  ngOnInit() {
-    this.searchBooksForm = this.fb.group({
-      searchBooks: ['', [Validators.required]]
-    });
-
-    this.searchBooksForm.valueChanges
-      .subscribe(term => this.store.dispatch(new fromBooksStore.SearchBooksAction(term)));
-
-
-  }
-
+  onTermEntered($event) {}
 }
-
