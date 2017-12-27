@@ -4,6 +4,9 @@
     <div class="heading">Search for a book</div>
     <div class="search-box-container">
       <avi-search-panel [volumes]="volumes" (termChanged)="onTermChagned($event)" (termEnetered)="onTermEntered($event)"></avi-search-panel>
+      <div class="adv-search-link">
+        <a routerLink="/books/adv-search">Advanced Search</a>
+      </div>
     </div>
   </div>
 </avi-default-layout>

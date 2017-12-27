@@ -22,9 +22,19 @@ import { VolumeDisplayComponent } from './components/volume-display/volume-displ
 import { SearchContainerComponent } from './containers/search-container/search-container.component';
 import { ACCOUNT_AREA_GUARDS } from '../account-area/guards';
 import { CheckIsAuthenticatedGuard } from '../account-area/guards/check-is-authenticated.guard';
-import { MatInputModule, MatAutocompleteModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatAutocompleteModule,
+  MatSelectModule,
+  MatSlideToggleModule,
+  MatCardModule,
+  MatButtonToggleModule,
+  MatButtonModule
+} from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
+import { AdvancedSearchContainerComponent } from './containers/advanced-search-container/advanced-search-container.component';
+import { AdvancedSearchFormComponent } from './components/advanced-search-form/advanced-search-form.component';
 
 const ROUTES: Routes = [
   {
@@ -41,6 +51,11 @@ const ROUTES: Routes = [
     path: 'search',
     component: SearchContainerComponent,
     canActivate: [CheckIsAuthenticatedGuard]
+  },
+  {
+    path: 'adv-search',
+    component: AdvancedSearchContainerComponent,
+    canActivate: [CheckIsAuthenticatedGuard]
   }
 ];
 
@@ -49,6 +64,11 @@ const ROUTES: Routes = [
     /* material design modules */
     MatInputModule,
     MatAutocompleteModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatButtonModule,
+    MatButtonToggleModule,
     /* end material design modules */
 
     CommonModule,
@@ -67,7 +87,9 @@ const ROUTES: Routes = [
     MyBookShelfComponent,
     VolumeDisplayComponent,
     SearchContainerComponent,
-    SearchPanelComponent
+    SearchPanelComponent,
+    AdvancedSearchContainerComponent,
+    AdvancedSearchFormComponent
   ],
   providers: [
     ...GLOBAL_PROVIDERS,

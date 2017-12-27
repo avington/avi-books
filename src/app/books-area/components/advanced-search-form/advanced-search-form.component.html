@@ -1,0 +1,63 @@
+<mat-card-content>
+  <form [formGroup]="advancedSearchForm" (ngSubmit)="onSubmit()" novalidate>
+    <h3 class="control-margin">Advanced Search</h3>
+
+    <section class="form-control">
+      <mat-form-field class="control-margin" style="width: 100%;">
+        <input matInput placeholder="Search Books" formControlName="searchBook">
+      </mat-form-field>
+    </section>
+
+    <section class="form-control">
+      <mat-form-field class="control-margin" style="width: 100%;">
+        <mat-select class="control-margin" placeholder="Filter" formControlName="filter">
+          <mat-option *ngFor="let item of filterBy" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </section>
+
+    <section class="form-control">
+      <mat-slide-toggle class="control-margin" [color]="color" [checked]="checked" formControlName="libraryRestrict">
+        Only My Library
+      </mat-slide-toggle>
+    </section>
+
+    <section class="form-control">
+      <mat-slide-toggle class="control-margin" [color]="color" [checked]="checked" formControlName="showPreorders">
+        Show Preorders
+      </mat-slide-toggle>
+    </section>
+
+    <section class="form-control">
+      <mat-form-field class="control-margin" style="width: 100%;">
+        <mat-select placeholder="Print Type Filter" formControlName="printType">
+          <mat-option *ngFor="let item of printTypeList" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </section>
+
+    <section class="form-control">
+      <mat-form-field class="control-margin" style="width: 100%;">
+        <mat-select class="control-margin" placeholder="Sort Order" formControlName="orderBy">
+          <mat-option *ngFor="let item of orderList" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </section>
+
+    <section class="control-margin submit">
+      <button class="mat-raised-button mat-primary" color="primary" mat-raised-button>Submit Search
+      </button>
+    </section>
+
+
+  </form>
+</mat-card-content>
