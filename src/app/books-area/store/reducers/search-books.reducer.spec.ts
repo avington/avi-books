@@ -15,10 +15,11 @@ describe('search-books Reducers', () => {
         const { initialState } = fromSearchBooks;
         const action = new fromActions.SearchBooksAction('search');
         const state = fromSearchBooks.reducer(initialState, action);
+        const empty = {};
 
         expect(state.loading).toBe(true);
         expect(state.loaded).toBe(false);
-        expect(state.entities).toEqual({});
+        expect(state.entities).toEqual([]);
       });
     });
   });
