@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Action } from '@ngrx/store';
-import { Actions, Effect } from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Action} from '@ngrx/store';
+import {Actions, Effect} from '@ngrx/effects';
 import * as fromActions from '../actions/search-book.actions';
+import * as fromRootActions from '../../../store/actions';
 import {
   catchError,
   debounceTime,
@@ -12,9 +13,10 @@ import {
   switchMap,
   tap
 } from 'rxjs/operators';
-import * as _ from 'lodash';
-import { BooksHttpService } from '../../services/books-http.service';
-import { of } from 'rxjs/observable/of';
+import {BooksHttpService} from '../../services/books-http.service';
+import {of} from 'rxjs/observable/of';
+import {SearchRequest} from '../../models/search-request';
+import {SearchBooks} from '../../models/search-books';
 
 @Injectable()
 export class SearchBooksEffects {
@@ -43,5 +45,41 @@ export class SearchBooksEffects {
       })
     );
 
-  constructor(private actions$: Actions, private booksHttp: BooksHttpService) {}
+  @Effect()
+  advanceSearchBooks: Observable<Action> = this.actions$
+    .ofType(fromActions.SearchBooksActionTypes.ADV_SEARCH_BOOKS)
+    .pipe(
+      map((action: fromActions.AdvancedSearchAction) => {
+        return action.payload;
+      }),
+      switchMap((payload: SearchRequest) => {
+        return this.booksHttp.advancedSearch(payload)
+          .pipe(
+            map((response: SearchBooks) => {
+
+              response = {
+                ...response,
+                startIndex: payload.startIndex,
+                maxResults: payload.maxResults
+              };
+
+              return new fromActions.AdvancedSearchSuccessAction(response);
+            }),
+            catchError(err => of(new fromActions.AdvancedSearchFailAction(err)))
+          );
+      })
+    );
+
+
+  @Effect()
+  goToSearchResults: Observable<Action> = this.actions$
+    .ofType(fromActions.SearchBooksActionTypes.ADV_SEARCH_BOOKS_SUCCESS)
+    .pipe(
+      map((searchResults) => {
+        return new fromRootActions.GoAction({path: ['/books/search-results']});
+      })
+    );
+
+  constructor(private actions$: Actions, private booksHttp: BooksHttpService) {
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'avi-advanced-search-container',
@@ -6,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./advanced-search-container.component.scss']
 })
 export class AdvancedSearchContainerComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store<fromStore.BooksState>) {}
 
   ngOnInit() {}
 
   onFormSubmitted($event) {
-    console.log('form submitted', $event);
+    this.store.dispatch(new fromStore.AdvancedSearchAction($event));
   }
 }

@@ -5,4 +5,6 @@ export interface SearchRequest {
   showPreorders?: boolean;
   printType?: string;
   orderBy?: string;
+  maxResults?: number;
+  startIndex?: number;
 }

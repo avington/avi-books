@@ -10,8 +10,8 @@ export interface Volume {
     layers: [{ layerId: number; volumeAnnotationsVersion: string }];
   };
   saleInfo?: SaleInfo;
-  selfLink: string;
-  userInfo: {
+  selfLink?: string;
+  userInfo?: {
     acquisitionType: number;
     entitlementType: number;
     isInMyBooks: boolean;

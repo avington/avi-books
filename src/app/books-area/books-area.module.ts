@@ -29,12 +29,13 @@ import {
   MatSlideToggleModule,
   MatCardModule,
   MatButtonToggleModule,
-  MatButtonModule
+  MatButtonModule, MatListModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AdvancedSearchContainerComponent } from './containers/advanced-search-container/advanced-search-container.component';
 import { AdvancedSearchFormComponent } from './components/advanced-search-form/advanced-search-form.component';
+import { SearchResultsContainerComponent } from './containers/search-results-container/search-results-container.component';
 
 const ROUTES: Routes = [
   {
@@ -56,6 +57,11 @@ const ROUTES: Routes = [
     path: 'adv-search',
     component: AdvancedSearchContainerComponent,
     canActivate: [CheckIsAuthenticatedGuard]
+  },
+  {
+    path: 'search-results',
+    component: SearchResultsContainerComponent,
+    canActivate: [CheckIsAuthenticatedGuard]
   }
 ];
 
@@ -69,6 +75,7 @@ const ROUTES: Routes = [
     MatCardModule,
     MatButtonModule,
     MatButtonToggleModule,
+    MatListModule,
     /* end material design modules */
 
     CommonModule,
@@ -89,7 +96,8 @@ const ROUTES: Routes = [
     SearchContainerComponent,
     SearchPanelComponent,
     AdvancedSearchContainerComponent,
-    AdvancedSearchFormComponent
+    AdvancedSearchFormComponent,
+    SearchResultsContainerComponent
   ],
   providers: [
     ...GLOBAL_PROVIDERS,
