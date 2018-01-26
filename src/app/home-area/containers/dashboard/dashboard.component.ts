@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'avi-dashboard',
@@ -8,14 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   private myBookShelves: { tileText: string; routerLinkText: string };
 
-  constructor() { }
+  tiles: any;
+
+  constructor() {
+  }
 
   ngOnInit() {
 
-    this.myBookShelves = {
-      tileText: 'My Book Shelves',
-      routerLinkText: '/books'
+    this.tiles = {
+      myBookShelves: {
+        tileText: 'My Book Shelves',
+        routerLinkText: '/books'
+      },
+      searchBooks: {
+        tileText: 'Search Books',
+        routerLinkText: '/books/search'
+      }
     };
+
   }
 
 }

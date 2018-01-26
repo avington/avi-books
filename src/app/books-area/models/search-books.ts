@@ -5,4 +5,10 @@ export interface SearchBooks {
   totalItems?: number;
   startIndex?: number;
   maxResults?: number;
+  q?: string;
+  filter?: string;
+  libraryRestrict?: boolean;
+  showPreorders?: boolean;
+  printType?: string;
+  orderBy?: string;
 }

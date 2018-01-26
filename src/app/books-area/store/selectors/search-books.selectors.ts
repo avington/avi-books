@@ -2,7 +2,7 @@ import {SearchBooksState} from './../reducers/search-books.reducer';
 import {createSelector} from '@ngrx/store';
 import * as fromFeature from '../reducers';
 import * as _ from 'lodash';
-import {getAdvancedSearchBookEntities} from '../reducers/advanced-search.reducer';
+import {AdvancedSearchBooksState, getAdvancedSearchBookEntities} from '../reducers/advanced-search.reducer';
 
 export const getSearchBooksState = createSelector(
   fromFeature.getBooksState,
@@ -35,5 +35,18 @@ export const getAdvancedSearchItemsFromEntitiyState = createSelector(
   (entity) => {
     return entity.items;
   }
-)
+);
+
+export const getAdvancedSearchPagingInfoFromEntitiyState = createSelector(
+  getAdvancedSearchEntitiesFromState,
+  (entity) => {
+    return {
+      pageIndex: entity.startIndex ? Math.abs(entity.totalItems / entity.startIndex) : 0 ,
+      length: entity.totalItems,
+      pageSize: entity.maxResults
+    };
+  }
+);
+
+
 

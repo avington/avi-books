@@ -29,7 +29,7 @@ import {
   MatSlideToggleModule,
   MatCardModule,
   MatButtonToggleModule,
-  MatButtonModule, MatListModule
+  MatButtonModule, MatListModule, MatPaginatorModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
@@ -76,6 +76,7 @@ const ROUTES: Routes = [
     MatButtonModule,
     MatButtonToggleModule,
     MatListModule,
+    MatPaginatorModule,
     /* end material design modules */
 
     CommonModule,

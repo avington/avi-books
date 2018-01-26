@@ -4,9 +4,15 @@ import * as fromActions from '../actions/search-book.actions';
 
 export interface AdvancedSearchBooksState {
   entity: {
-    startIndex?: number,
-    totalItems?: number,
-    maxResults?: number,
+    startIndex?: number;
+    totalItems?: number;
+    maxResults?: number;
+    q?: string;
+    filter?: string;
+    libraryRestrict?: boolean;
+    showPreorders?: boolean;
+    printType?: string;
+    orderBy?: string;
     items?: Volume[]
   };
   loading: boolean;
@@ -38,7 +44,7 @@ export function reducer(state = initialState,
     }
 
     case fromActions.SearchBooksActionTypes.ADV_SEARCH_BOOKS_SUCCESS: {
-      const entity = action.payload
+      const entity = action.payload;
       return {
         ...state,
         loading: false,

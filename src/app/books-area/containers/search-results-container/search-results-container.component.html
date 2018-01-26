@@ -1,5 +1,11 @@
 <avi-default-layout>
-<div class="list" *ngFor="let volume of items$ | async">
-  {{volume.volumeInfo.title}}
-</div>
+  <div class="volume-item" *ngFor="let volume of items$ | async">
+    <avi-volume-display [volume]="volume"></avi-volume-display>
+  </div>
+  <mat-paginator [length]="(pageInfo$ | async)?.length"
+                 [pageSize]="(pageInfo$ | async)?.pageSize"
+                 [pageIndex]="(pageInfo$ | async)?.pageIndex"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageEvent($event)">
+  </mat-paginator>
 </avi-default-layout>

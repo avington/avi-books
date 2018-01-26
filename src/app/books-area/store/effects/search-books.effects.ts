@@ -59,8 +59,7 @@ export class SearchBooksEffects {
 
               response = {
                 ...response,
-                startIndex: payload.startIndex,
-                maxResults: payload.maxResults
+                ...payload
               };
 
               return new fromActions.AdvancedSearchSuccessAction(response);
