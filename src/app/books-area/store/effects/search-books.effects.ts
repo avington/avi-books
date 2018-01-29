@@ -62,6 +62,7 @@ export class SearchBooksEffects {
                 ...payload
               };
 
+              console.log('effect', response);
               return new fromActions.AdvancedSearchSuccessAction(response);
             }),
             catchError(err => of(new fromActions.AdvancedSearchFailAction(err)))

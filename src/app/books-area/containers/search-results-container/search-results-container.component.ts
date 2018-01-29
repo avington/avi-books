@@ -54,6 +54,7 @@ export class SearchResultsContainerComponent implements OnInit {
       startIndex
     };
 
+    console.log(this.searchRequest);
     this.store.dispatch(new AdvancedSearchAction(this.searchRequest));
   }
 }

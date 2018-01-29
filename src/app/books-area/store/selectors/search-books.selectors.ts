@@ -41,7 +41,7 @@ export const getAdvancedSearchPagingInfoFromEntitiyState = createSelector(
   getAdvancedSearchEntitiesFromState,
   (entity) => {
     return {
-      pageIndex: entity.startIndex ? Math.abs(entity.totalItems / entity.startIndex) : 0 ,
+      pageIndex: entity.pageIndex,
       length: entity.totalItems,
       pageSize: entity.maxResults
     };

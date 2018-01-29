@@ -4,6 +4,7 @@ export interface SearchBooks {
   items: Volume[];
   totalItems?: number;
   startIndex?: number;
+  pageIndex?: number;
   maxResults?: number;
   q?: string;
   filter?: string;

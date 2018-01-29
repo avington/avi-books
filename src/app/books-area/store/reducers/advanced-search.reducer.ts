@@ -5,6 +5,7 @@ import * as fromActions from '../actions/search-book.actions';
 export interface AdvancedSearchBooksState {
   entity: {
     startIndex?: number;
+    pageIndex?: number;
     totalItems?: number;
     maxResults?: number;
     q?: string;
@@ -44,12 +45,19 @@ export function reducer(state = initialState,
     }
 
     case fromActions.SearchBooksActionTypes.ADV_SEARCH_BOOKS_SUCCESS: {
-      const entity = action.payload;
+      const tempEntity = action.payload;
+
+      const pageIndex = tempEntity.startIndex === 0
+        ? 0
+        : (tempEntity.startIndex / tempEntity.maxResults);
+
+      const entity =  {...tempEntity, pageIndex};
+
       return {
         ...state,
         loading: false,
         loaded: true,
-        entity
+        entity,
       };
     }
 
